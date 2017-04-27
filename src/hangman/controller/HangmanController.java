@@ -136,6 +136,11 @@ public class HangmanController
 		return guessedLetters;
 	}
 	
+	public String getLives()
+	{
+		return Integer.toString(lives);
+	}
+	
 	public String getHiddenWord()
 	
 	{

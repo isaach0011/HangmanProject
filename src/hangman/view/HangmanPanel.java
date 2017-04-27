@@ -21,6 +21,8 @@ public class HangmanPanel extends JPanel
 	private JLabel guessesLabel;
 	private JLabel wordLabel;
 	private JLabel guessLabel;
+	private JLabel livesLabel;
+	private JLabel dynamicLivesLabel;
 	private String word;
 	
 	public HangmanPanel(HangmanController baseController)
@@ -35,9 +37,14 @@ public class HangmanPanel extends JPanel
 		this.exitButton = new JButton("Exit Game");
 		this.submitButton = new JButton("Submit");
 		this.gameLabel = new JLabel("Hangman");
+
 		this.guessesLabel = new JLabel("Your Guesses");
 		this.wordLabel = new JLabel("Word");
 		this.guessLabel = new JLabel("Enter Guessed Letter Here");
+		this.livesLabel = new JLabel("Lives:");
+
+		this.dynamicLivesLabel = new JLabel("6");
+
 		this.word = "";
 		//this.gallowsLabel = new JLabel(gallowsIcon);
 		
@@ -73,7 +80,9 @@ public class HangmanPanel extends JPanel
 		this.setPreferredSize(new Dimension(900,600));
 		this.setBackground(Color.gray);
 		
-		gameLabel.setFont(new Font("Impact", Font.PLAIN, 50));
+		gameLabel.setFont(new Font("BigNoodleTitling", Font.PLAIN, 50));
+		livesLabel.setFont(new Font("Impact", Font.PLAIN, 50));
+		dynamicLivesLabel.setFont(new Font("Impact", Font.PLAIN, 50));
 		
 		this.add(guessesDisplay);
 		this.add(wordDisplay);
@@ -84,13 +93,13 @@ public class HangmanPanel extends JPanel
 		this.add(guessesLabel);
 		this.add(wordLabel);
 		this.add(guessLabel);
+		this.add(livesLabel);
+		this.add(dynamicLivesLabel);
 		//this.add(gallowsLabel);
 	}
 	
 	public void setupLayout()
 	{
-		baseLayout.putConstraint(SpringLayout.NORTH, gameLabel, 10, SpringLayout.NORTH, this);
-		baseLayout.putConstraint(SpringLayout.EAST, gameLabel, -316, SpringLayout.EAST, this);
 		baseLayout.putConstraint(SpringLayout.WEST, exitButton, 10, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.SOUTH, exitButton, -10, SpringLayout.SOUTH, this);
 		baseLayout.putConstraint(SpringLayout.SOUTH, hangmanInput, -75, SpringLayout.SOUTH, this);
@@ -107,6 +116,12 @@ public class HangmanPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.WEST, guessesLabel, 0, SpringLayout.WEST, guessesDisplay);
 		baseLayout.putConstraint(SpringLayout.SOUTH, guessesLabel, -6, SpringLayout.NORTH, guessesDisplay);
 		baseLayout.putConstraint(SpringLayout.NORTH, wordDisplay, 0, SpringLayout.NORTH, guessesDisplay);
+		baseLayout.putConstraint(SpringLayout.NORTH, gameLabel, 40, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, gameLabel, 44, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, livesLabel, 142, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, livesLabel, -339, SpringLayout.EAST, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, dynamicLivesLabel, 6, SpringLayout.SOUTH, livesLabel);
+		baseLayout.putConstraint(SpringLayout.EAST, dynamicLivesLabel, -380, SpringLayout.EAST, this);
 	}
 	
 	public void setupListeners()
@@ -143,6 +158,7 @@ public class HangmanPanel extends JPanel
 		baseController.playgame(guessedLetter);
 		guessesDisplay.setText(baseController.getGuessedLetters());
 		wordDisplay.setText(baseController.getHiddenWord());
+		dynamicLivesLabel.setText(baseController.getLives());
 		hangmanInput.setText("");
 	}
 }
