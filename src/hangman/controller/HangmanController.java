@@ -28,9 +28,39 @@ public class HangmanController
 	
 	public void start()
 	{
-
+		
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//startComplexity
 	public void playgame(String guessedPhrase)
 	{
 		if(guessedPhrase.length() > 1)
@@ -80,7 +110,22 @@ public class HangmanController
 			}
 		}
 	}
+	//endComplexity
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//startAbstraction
 	public void matchLetter(char guessedLetter)
 	{
 		for(int i = 0; i < word.length(); i++)
@@ -91,6 +136,8 @@ public class HangmanController
 			}
 		}
 	}
+	//endAbstraction
+	
 	
 	public void addWord(String word)
 	{
@@ -115,7 +162,7 @@ public class HangmanController
 		}
 		return hidden;
 	}
-	
+
 	public HangmanFrame getBaseFrame()
 	{
 		return baseFrame;
